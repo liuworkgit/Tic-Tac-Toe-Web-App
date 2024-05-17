@@ -1,5 +1,7 @@
+'use strict'
+
 /**
- * Gameboard
+ * @class Gameboard
  * Represents the 3x3 grid on which Tic-Tac-Toe is played
  * 
  * private:
@@ -11,7 +13,8 @@
  * 
  * public:
  * @function markBox - takes a pair of grid coordinates and a string, and fills in 
- * the spot at said coordinates with said string.
+ * the spot at said coordinates with said string. Coordinates must be between [0,2] 
+ * for cols and rows
  * @function clearBoard - clears the entire gameboard.
  * @function isRowWin - returns true if the given row is filled by the same player's 
  * name
@@ -22,7 +25,49 @@
  * @function isBoardFilled - returns true if the entire grid is filled
  */
 function createGameboard() {
-    let grid = [["E", "E", "E"],
-                ["E", "E", "E"],
-                ["E", "E", "E"]];
+    // private
+    let grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
+    let numEmpty = 9;
+
+    /**
+     * returns true if the spot has been filled.
+     * @param {number} col - 0 <= col <= 2 
+     * @param {number} row - 0 <= row <= 2 
+     * @returns boolean
+     */
+    const isSpotFilled = function (col, row) {
+        return !(grid[col][row] == "E");
+    }
+
+    /**
+     * Decrements numEmpty by 1.
+     * @returns void
+     */
+    const subEmpty = function () {
+        numEmpty--;
+    };
+
+    // public
+    /**
+     * Fills in the spot at the given col/row coordinates with the marker
+     * @param {number} col - 0 <= col <= 2
+     * @param {number} row - 0 <= col <= 2
+     * @param {string} marker
+     * @returns void
+     */
+    const markBox = function (col, row, marker) {
+        if (!isSpotFilled(col, row)) {
+            grid[col][row] = marker;
+            numEmpty--;
+        }
+    }
+
+    /**
+     * Clears the entire gameboard.
+     * @returns void
+     */
+    const clearBoard = function () {
+        grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
+        numEmpty = 9;
+    }
 }
