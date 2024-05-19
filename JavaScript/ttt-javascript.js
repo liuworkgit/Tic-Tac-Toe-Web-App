@@ -41,7 +41,6 @@ function createGameboard() {
 
     /**
      * Decrements numEmpty by 1.
-     * @returns void
      */
     const subEmpty = function () {
         numEmpty--;
@@ -53,7 +52,6 @@ function createGameboard() {
      * @param {number} col - 0 <= col <= 2
      * @param {number} row - 0 <= col <= 2
      * @param {string} marker
-     * @returns void
      */
     const markBox = function (col, row, marker) {
         if (!isSpotFilled(col, row)) {
@@ -64,7 +62,6 @@ function createGameboard() {
 
     /**
      * Clears the entire gameboard.
-     * @returns void
      */
     const clearBoard = function () {
         grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
