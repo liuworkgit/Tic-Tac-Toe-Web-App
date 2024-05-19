@@ -2,6 +2,7 @@
 
 /**
  * @class Gameboard
+ * 
  * Represents the 3x3 grid on which Tic-Tac-Toe is played
  * 
  * @private
@@ -12,16 +13,12 @@
  * @function subEmpty - decrements the number of empty slots
  * 
  * @public
- * @function markBox - takes a pair of grid coordinates and a string, and fills in 
- * the spot at said coordinates with said string. Coordinates must be between [0,2] 
- * for cols and rows
+ * @function markBox - fills in a spot with the given marker
  * @function clearBoard - clears the entire gameboard.
- * @function isRowWin - returns true if the given row is filled by the same player's 
- * name
- * @function isColWin - returns true if the given col is filled by the same player's 
- * name
- * @function isDiagWin - returns true if the diagonal is filled by the same player's 
- * name
+ * @function isRowColFilled - returns true if the row/col is filled
+ * @function isDiagFilled - returns true if the diagonal is filled
+ * @function isRowColWin - returns true if the row/col has been filled entirely by a player
+ * @function isDiagwin - returns true if the diagonal has been filled entirely by a player
  * @function isBoardFilled - returns true if the entire grid is filled
  */
 function createGameboard() {
@@ -46,6 +43,20 @@ function createGameboard() {
         numEmpty--;
     };
 
+    /**
+     * Returns true if the row/col at the given index has been filled
+     * @param {boolean} isRow - true if it's a row, false if it's a col 
+     * @param {number} index - 0 <= index <= 2
+     * @returns boolean
+     */
+    const isRowColFilled = function (isRow, index) {}
+
+    /**
+     * Returns true if the diagonal has been filled
+     * @returns boolean
+     */
+    const isDiagFilled = function () {}
+
     // public
     /**
      * Fills in the spot at the given col/row coordinates with the marker
@@ -67,4 +78,31 @@ function createGameboard() {
         grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
         numEmpty = 9;
     }
+
+    /**
+     * Returns true if the row/col at the given index has been filled completely
+     * by a single player.
+     * @param {boolean} isRow - true if it's a row, false if it's a col 
+     * @param {number} index - 0 <= index <= 2 
+     * @returns boolean
+     */
+    const isRowColWin = function (isRow, index) {}
+
+    /**
+     * Returns true if the diagonal has been filled completely by a single
+     * player.
+     * @returns boolean
+     */
+    const isDiagwin = function () {}
+
+    /**
+     * Returns true if the entire grid has been filled.
+     * @returns boolean
+     */
+    const isBoardFilled = function () {}
+
+    // return gameboard object
+    return { grid, numEmpty, markBox, 
+        clearBoard, isRowColWin, isDiagwin, 
+        isBoardFilled }
 }
