@@ -4,14 +4,14 @@
  * @class Gameboard
  * Represents the 3x3 grid on which Tic-Tac-Toe is played
  * 
- * private:
+ * @private
  * @field grid - a 2D array where each entry is either "E" if it's an empty spot or
  * a player's name if it's been filled.
  * @field numEmpty - the number of currently empty slots. By default this is 9
  * @function isSpotFilled - returns true if the given spot is filled
  * @function subEmpty - decrements the number of empty slots
  * 
- * public:
+ * @public
  * @function markBox - takes a pair of grid coordinates and a string, and fills in 
  * the spot at said coordinates with said string. Coordinates must be between [0,2] 
  * for cols and rows
