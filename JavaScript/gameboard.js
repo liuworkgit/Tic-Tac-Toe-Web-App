@@ -1,72 +1,51 @@
 'use strict'
 
 /**
- * @class Gameboard
+ * @module gameboard
  * 
  * Represents the 3x3 grid on which Tic-Tac-Toe is played
  * 
- * @private
- * @field grid - a 2D array where each entry is either "E" if it's an empty spot or
- * a player's name if it's been filled.
- * @field numEmpty - the number of currently empty slots. By default this is 9
- * @function isSpotFilled - returns true if the given spot is filled
- * @function subEmpty - decrements the number of empty slots
- * 
- * @public
- * @function markBox - fills in a spot with the given marker
+ * @function markBox - fills in a spot with the given marker.
  * @function clearBoard - clears the entire gameboard.
- * @function isRowColFilled - returns true if the row/col is filled
- * @function isDiagFilled - returns true if the diagonal is filled
- * @function isRowColWin - returns true if the row/col has been filled entirely by a player
- * @function isDiagwin - returns true if the diagonal has been filled entirely by a player
- * @function isBoardFilled - returns true if the entire grid is filled
+ * @function isRowColWin - returns true if the row/col has been filled entirely by a player.
+ * @function isDiagwin - returns true if the diagonal has been filled entirely by a player.
+ * @function isBoardFilled - returns true if the entire grid is filled.
  */
-function createGameboard() {
+const gameboard = (function createGameboard() {
     // private
+    /**
+     * @field grid
+     * represents the grid of a tic-tac-toe game.
+     * entries are "E" if the spot is empty or a player's name if it's full
+     * accessed by grid[row][col]
+     * @field numEmpty
+     * number of empty spots in the grid
+     * by default, numEmpty = 9
+     */
     let grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
     let numEmpty = 9;
 
     /**
-     * returns true if the spot has been filled.
-     * @param {number} col - 0 <= col <= 2 
+     * returns true if the spot has been filled with the given marker.
      * @param {number} row - 0 <= row <= 2 
+     * @param {number} col - 0 <= col <= 2 
+     * @param {string} marker
      * @returns boolean
      */
-    const isSpotFilled = function (col, row) {
-        return !(grid[col][row] == "E");
+    const isSpotFilled = function (row, col, marker) {
+        return grid[row][col] == marker;
     }
-
-    /**
-     * Decrements numEmpty by 1.
-     */
-    const subEmpty = function () {
-        numEmpty--;
-    };
-
-    /**
-     * Returns true if the row/col at the given index has been filled
-     * @param {boolean} isRow - true if it's a row, false if it's a col 
-     * @param {number} index - 0 <= index <= 2
-     * @returns boolean
-     */
-    const isRowColFilled = function (isRow, index) {}
-
-    /**
-     * Returns true if the diagonal has been filled
-     * @returns boolean
-     */
-    const isDiagFilled = function () {}
 
     // public
     /**
-     * Fills in the spot at the given col/row coordinates with the marker
+     * Fills in the spot at the given col/row coordinates with the marker.
+     * @param {number} row - 0 <= row <= 2 
      * @param {number} col - 0 <= col <= 2
-     * @param {number} row - 0 <= col <= 2
      * @param {string} marker
      */
-    const markBox = function (col, row, marker) {
-        if (!isSpotFilled(col, row)) {
-            grid[col][row] = marker;
+    const markBox = function (row, col, marker) {
+        if (isSpotFilled(row, col, "E")) {
+            grid[row][col] = marker;
             numEmpty--;
         }
     }
@@ -82,27 +61,55 @@ function createGameboard() {
     /**
      * Returns true if the row/col at the given index has been filled completely
      * by a single player.
-     * @param {boolean} isRow - true if it's a row, false if it's a col 
+     * @param {boolean} isRow - true = row, false = col 
      * @param {number} index - 0 <= index <= 2 
+     * @param {string} playerName
      * @returns boolean
      */
-    const isRowColWin = function (isRow, index) {}
+    const isRowColWin = function (isRow, index, playerName) {
+        let isWin = false;
+        if (isRow) {
+            for (let i = 0; i <= 2; i++) {
+                isWin = isSpotFilled(index, i, playerName);
+            }
+        } else {
+            for (let i = 0; i <= 2; i++) {
+                isWin = isSpotFilled(i, index, playerName);
+            }
+        }
+        return isWin;
+    }
 
     /**
      * Returns true if the diagonal has been filled completely by a single
      * player.
+     * @param {string} playerName
      * @returns boolean
      */
-    const isDiagwin = function () {}
+    const isDiagwin = function (playerName) {
+        return isSpotFilled(0, 0, playerName) 
+        && isSpotFilled(1, 1, playerName) 
+        && isSpotFilled(2, 2, playerName);
+    }
 
     /**
      * Returns true if the entire grid has been filled.
      * @returns boolean
      */
-    const isBoardFilled = function () {}
+    const isBoardFilled = function () {
+        let isFilled = false;
+        for (let row = 0; row <= 2; row++) {
+            for (let col = 0; col <= 2; col++) {
+                isFilled = !isSpotFilled(row, col, "E");
+            }
+        }
+        return isFilled;
+    }
 
     // return gameboard object
     return { grid, numEmpty, markBox, 
         clearBoard, isRowColWin, isDiagwin, 
         isBoardFilled }
-}
+})();
+
+export { gameboard };
