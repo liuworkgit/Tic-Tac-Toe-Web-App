@@ -1,7 +1,8 @@
 'use strict'
 
 /**
- * @module Player
+ * @module player
+ * 
  * Represents a player of the tic-tac-toe game.
  * 
  * @param {string} name - the name of the player
