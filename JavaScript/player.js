@@ -1,10 +1,10 @@
 'use strict'
 
 /**
- * @class Player
+ * @module Player
  * Represents a player of the tic-tac-toe game.
  * 
- * @field name - the name of the player
+ * @param {string} name - the name of the player
  * @field numWins - the number of times the player won
  * @function increaseNumWins - increase numWins by 1
  */
@@ -20,3 +20,5 @@ function createPlayer(name) {
 
     return { name, numWins, increaseNumWins };
 }
+
+export { createPlayer };
