@@ -17,9 +17,9 @@ function createPlayer(name) {
      */
     const increaseNumWins = function () {
         numWins++;
-    }
+    };
 
     return { name, numWins, increaseNumWins };
-}
+};
 
 export { createPlayer };

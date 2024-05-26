@@ -34,7 +34,7 @@ const gameboard = (function createGameboard() {
      */
     const isSpotFilled = function (row, col, marker) {
         return grid[row][col] == marker;
-    }
+    };
 
     // public
     /**
@@ -47,8 +47,8 @@ const gameboard = (function createGameboard() {
         if (isSpotFilled(row, col, "E")) {
             grid[row][col] = marker;
             numEmpty--;
-        }
-    }
+        };
+    };
 
     /**
      * Clears the entire gameboard.
@@ -56,7 +56,7 @@ const gameboard = (function createGameboard() {
     const clearBoard = function () {
         grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
         numEmpty = 9;
-    }
+    };
 
     /**
      * Returns true if the row/col at the given index has been filled completely
@@ -71,14 +71,14 @@ const gameboard = (function createGameboard() {
         if (isRow) {
             for (let i = 0; i <= 2; i++) {
                 isWin = isSpotFilled(index, i, playerName);
-            }
+            };
         } else {
             for (let i = 0; i <= 2; i++) {
                 isWin = isSpotFilled(i, index, playerName);
-            }
-        }
+            };
+        };
         return isWin;
-    }
+    };
 
     /**
      * Returns true if the diagonal has been filled completely by a single
@@ -90,7 +90,7 @@ const gameboard = (function createGameboard() {
         return isSpotFilled(0, 0, playerName) 
         && isSpotFilled(1, 1, playerName) 
         && isSpotFilled(2, 2, playerName);
-    }
+    };
 
     /**
      * Returns true if the entire grid has been filled.
@@ -101,15 +101,15 @@ const gameboard = (function createGameboard() {
         for (let row = 0; row <= 2; row++) {
             for (let col = 0; col <= 2; col++) {
                 isFilled = !isSpotFilled(row, col, "E");
-            }
-        }
+            };
+        };
         return isFilled;
-    }
+    };
 
     // return gameboard object
     return { grid, numEmpty, markBox, 
         clearBoard, isRowColWin, isDiagwin, 
-        isBoardFilled }
+        isBoardFilled };
 })();
 
 export { gameboard };
