@@ -9,8 +9,7 @@ const gameboard = (function createGameboard() {
     // private
     /**
      * @field grid
-     * represents the grid of a tic-tac-toe game.
-     * entries are "E" if the spot is empty or a player's name if it's full
+     * entries are "E" if the spot is empty or a marker if it's full
      * accessed by grid[row][col]
      */
     let grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
@@ -59,18 +58,18 @@ const gameboard = (function createGameboard() {
      * by a single player.
      * @param {boolean} isRow - true = row, false = col 
      * @param {number} index - 0 <= index <= 2 
-     * @param {string} playerName
+     * @param {string} marker
      * @returns boolean
      */
-    const isRowColWin = function (isRow, index, playerName) {
+    const isRowColWin = function (isRow, index, marker) {
         let isWin = false;
         if (isRow) {
             for (let i = 0; i <= 2; i++) {
-                isWin = isSpotFilled(index, i, playerName);
+                isWin = isSpotFilled(index, i, marker);
             };
         } else {
             for (let i = 0; i <= 2; i++) {
-                isWin = isSpotFilled(i, index, playerName);
+                isWin = isSpotFilled(i, index, marker);
             };
         };
         return isWin;
@@ -79,13 +78,13 @@ const gameboard = (function createGameboard() {
     /**
      * Returns true if the diagonal has been filled completely by a single
      * player.
-     * @param {string} playerName
+     * @param {string} marker
      * @returns boolean
      */
-    const isDiagwin = function (playerName) {
-        return isSpotFilled(0, 0, playerName) 
-        && isSpotFilled(1, 1, playerName) 
-        && isSpotFilled(2, 2, playerName);
+    const isDiagwin = function (marker) {
+        return isSpotFilled(0, 0, marker) 
+        && isSpotFilled(1, 1, marker) 
+        && isSpotFilled(2, 2, marker);
     };
 
     /**

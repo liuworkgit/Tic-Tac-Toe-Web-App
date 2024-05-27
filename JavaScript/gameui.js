@@ -1,5 +1,7 @@
 'use strict'
 
+import { gameflow } from "./gameflow";
+
 /**
  * @module GameUI
  * 
@@ -9,6 +11,10 @@
  * (https://www.altcademy.com/blog/how-to-get-input-in-javascript/#getting-user-input-through-console-input)
  */
 function createGameUI() {
+    const readline = require('readline').createInterface(
+        {input: process.stdin, output: process.stdout}
+    );
+
     /**
      * gets the players' names and starts the game.
      * @returns void
