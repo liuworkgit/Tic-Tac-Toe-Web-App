@@ -3,13 +3,7 @@
 /**
  * @module gameboard
  * 
- * Represents the 3x3 grid on which Tic-Tac-Toe is played
- * 
- * @function markBox - fills in a spot with the given marker.
- * @function clearBoard - clears the entire gameboard.
- * @function isRowColWin - returns true if the row/col has been filled entirely by a player.
- * @function isDiagwin - returns true if the diagonal has been filled entirely by a player.
- * @function isBoardFilled - returns true if the entire grid is filled.
+ * Represents the 3x3 grid on which Tic-Tac-Toe is played.
  */
 const gameboard = (function createGameboard() {
     // private
@@ -18,11 +12,13 @@ const gameboard = (function createGameboard() {
      * represents the grid of a tic-tac-toe game.
      * entries are "E" if the spot is empty or a player's name if it's full
      * accessed by grid[row][col]
+     */
+    let grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
+    /**
      * @field numEmpty
      * number of empty spots in the grid
      * by default, numEmpty = 9
      */
-    let grid = [["E", "E", "E"],["E", "E", "E"],["E", "E", "E"]];
     let numEmpty = 9;
 
     /**

@@ -7,10 +7,6 @@
  * 
  * @param {string} name - the name of the player
  * @param {number} id - the player's id number
- * @function increaseNumWins - increase the number of wins by 1
- * @function getNumWins - returns the number of wins
- * @function getName - returns the player's name
- * @function getId - returns the player's id
  */
 function createPlayer(name, id) {
     /**
@@ -32,7 +28,7 @@ function createPlayer(name, id) {
      */
     const getNumWins = function () {
         return numWins;
-    }
+    };
 
     /**
      * returns the player's name.
@@ -40,7 +36,7 @@ function createPlayer(name, id) {
      */
     const getName = function () {
         return name;
-    }
+    };
 
     /**
      * returns the player's id.
@@ -48,7 +44,7 @@ function createPlayer(name, id) {
      */
     const getId = function () {
         return id;
-    }
+    };
 
     return { increaseNumWins, getNumWins, getName, getId };
 };
