@@ -7,8 +7,9 @@
  * 
  * @param {string} name - the name of the player
  * @param {number} id - the player's id number
+ * @param {string} marker - what the player will draw on the board
  */
-function createPlayer(name, id) {
+function createPlayer(name, id, marker) {
     /**
      * @field numWins - the number of times the player won
      */
@@ -46,7 +47,15 @@ function createPlayer(name, id) {
         return id;
     };
 
-    return { increaseNumWins, getNumWins, getName, getId };
+    /**
+     * returns the player's marker.
+     * @returns string
+     */
+    const getMarker = function () {
+        return marker;
+    };
+
+    return { increaseNumWins, getNumWins, getName, getId, getMarker };
 };
 
 export { createPlayer };
