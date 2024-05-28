@@ -115,9 +115,10 @@ const gameboard = (function createGameboard() {
     };
 
     // return gameboard object
-    return { grid, numEmpty, markBox, 
-        clearBoard, isRowColWin, isDiagwin, 
-        isBoardFilled };
+    return { 
+        markBox, clearBoard, isRowColWin, 
+        isDiagwin, isBoardFilled, printBoard 
+    };
 })();
 
 export { gameboard };
