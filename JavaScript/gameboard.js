@@ -101,6 +101,19 @@ const gameboard = (function createGameboard() {
         return isFilled;
     };
 
+    /**
+     * Prints the board to the console.
+     * @returns void
+     */
+    const printBoard = function () {
+        for (let row = 0; row <= 2; row++) {
+            for (let col = 0; col <= 2; col++) {
+                console.log(`[${grid[row[col]]}]`);
+            };
+            console.log("\n");
+        };
+    };
+
     // return gameboard object
     return { grid, numEmpty, markBox, 
         clearBoard, isRowColWin, isDiagwin, 
