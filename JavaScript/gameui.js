@@ -1,5 +1,6 @@
 'use strict'
 
+import { printBoard } from "./gameboard";
 import { gameflow } from "./gameflow";
 
 /**
@@ -11,27 +12,14 @@ import { gameflow } from "./gameflow";
  * (https://www.altcademy.com/blog/how-to-get-input-in-javascript/#getting-user-input-through-console-input)
  */
 function createGameUI() {
+    let gf = gameflow;
     const readline = require('readline').createInterface(
         {input: process.stdin, output: process.stdout}
     );
 
     /**
-     * gets the players' names and starts the game.
-     * @returns void
+     * Starts a new game and plays it until the end
+     * @return void
      */
-    const newGame = function () {};
-
-    /**
-     * lets the current player play a round.
-     * @returns void
-     */
-    const playRound = function () {};
-
-    /**
-     * ends the game by announcing a win/tie.
-     * @returns void
-     */
-    const endGame = function () {};
-
-    return { newGame, playRound, endGame };
+    const playGame = function () {}
 };

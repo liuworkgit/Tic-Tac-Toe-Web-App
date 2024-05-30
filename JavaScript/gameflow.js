@@ -10,23 +10,22 @@ import { createPlayer as player } from "./player";
  *  */
 const gameflow = (function createGameflow () {
     let board = gameboard;
-    let p1; // player 1
-    let p2; // player 2
+    let p1 = player("Player One", 1, "X");
+    let p2 = player("Player Two", 2, "O");
     let currTurn; // which player is currently going
     let isGameActive = false; // if there's an ongoing game
 
     /**
-     * starts a new game by getting the players' names and 
-     * randomising who goes first
-     * @param {string} p1name - name of player 1
-     * @param {string} p2name - name of player 2
+     * starts a new game by randomising who goes first
      * @return void
      */
-    const newGame = function (p1name, p2name) {
-        p1 = player(p1name, 1, "X");
-        p2 = player(p2name, 2, "O");
-        randomizeStarting();
+    const newGame = function () {
+        console.log("Welcome to Tic-Tac-Toe!");
         isGameActive = true;
+
+        randomizeStarting();
+        console.log(`${currTurn.getName()} is going first.`);
+        board.printBoard();
     };
 
     /**
@@ -44,8 +43,7 @@ const gameflow = (function createGameflow () {
      */
     const restartGame = function () {
         board.clearBoard();
-        randomizeStarting();
-        isGameActive = true;
+        newGame();
     };
 
     /**
@@ -57,7 +55,8 @@ const gameflow = (function createGameflow () {
     const playRound = function (row, col) {
         board.markBox(row, col, currTurn.getMarker());
         console.log(`${currTurn.getName()} marked box at 
-        row ${row.toString()} and column ${col.toString()}`);
+        row ${row.toString()} and column ${col.toString()}.`);
+        board.printBoard();
 
         isGameOver(row, col, currTurn);
         changeTurn();
@@ -137,7 +136,23 @@ const gameflow = (function createGameflow () {
         winner.increaseNumWins();
     };
 
-    return { newGame, restartGame, playRound, endGame };
+    /**
+     * Returns the player whose turn it currently is.
+     * @returns player
+     */
+    const getCurrTurn = function () {
+        return currTurn;
+    }
+
+    /**
+     * Returns the players as an array.
+     * @returns [player, player]
+     */
+    const getPlayers = function () {
+        return [ p1, p2 ];
+    }
+
+    return { newGame, restartGame, playRound, endGame, getCurrTurn, getPlayers };
 })();
 
 export { gameflow };
