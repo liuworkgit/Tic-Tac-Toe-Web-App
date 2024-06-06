@@ -108,6 +108,7 @@ const gameflow = (function createGameflow () {
      */
     const changeTurn = function () {
         currTurn = (currTurn === p1) ? p2 : p1;
+        console.log(`It is currently ${currTurn.getName()}'s turn.`);
     };
 
     /**
