@@ -11,7 +11,7 @@
  */
 function createPlayer(name, id, marker) {
     /**
-     * @field numWins - the number of times the player won
+     * @field the number of times the player won
      */
     let numWins = 0;
 
